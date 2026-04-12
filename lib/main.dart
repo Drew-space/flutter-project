@@ -7,21 +7,22 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  // Variables
-  String name = "Drew";
-  int age = 20;
-  double pi = 3.14;
-  bool isBeginner = true;
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.deepPurple[200],
         body: Center(
-          child: Text(
-            "Hello World from Flutter",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          child: Container(
+            height: 300,
+            width: 300,
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            padding: EdgeInsets.all(20),
+            child: Icon(Icons.favorite, color: Colors.white, size: 50),
           ),
         ),
       ),
