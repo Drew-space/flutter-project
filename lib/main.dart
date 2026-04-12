@@ -9,6 +9,10 @@ class MyApp extends StatelessWidget {
 
   List<String> names = ["Drew", "Tech", "Flutter"];
 
+  void printNames() {
+    print("Container tapped! check the console");
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,10 +31,19 @@ class MyApp extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: ListView.builder(
-            itemCount: names.length,
-            itemBuilder: (context, index) =>
-                ListTile(title: Text(names[index])),
+          child: GestureDetector(
+            onTap: printNames,
+            child: Container(
+              height: 200,
+              width: 200,
+              color: Colors.deepPurple[200],
+              child: Center(
+                child: Text(
+                  "Hello, World!",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
           ),
         ),
       ),
