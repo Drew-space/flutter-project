@@ -7,12 +7,13 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  List<String> names = ["Drew", "Tech", "Flutter"];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.deepPurple[200],
         appBar: AppBar(
           title: Text('My App Bar', style: TextStyle(color: Colors.white)),
           backgroundColor: Colors.lightBlue,
@@ -26,15 +27,10 @@ class MyApp extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: Container(
-            height: 300,
-            width: 300,
-            decoration: BoxDecoration(
-              color: Colors.deepPurple,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            padding: EdgeInsets.all(20),
-            child: Icon(Icons.favorite, color: Colors.white, size: 50),
+          child: ListView.builder(
+            itemCount: names.length,
+            itemBuilder: (context, index) =>
+                ListTile(title: Text(names[index])),
           ),
         ),
       ),
