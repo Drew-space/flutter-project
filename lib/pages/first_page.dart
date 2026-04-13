@@ -15,8 +15,22 @@ class FirstPage extends StatelessWidget {
               child: Icon(Icons.account_circle, size: 100, color: Colors.white),
             ),
 
-            ListTile(leading: Icon(Icons.home), title: Text("Home")),
-            ListTile(leading: Icon(Icons.settings), title: Text("Settings")),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/homepage");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("Settings"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/settingpage");
+              },
+            ),
           ],
         ),
       ),
