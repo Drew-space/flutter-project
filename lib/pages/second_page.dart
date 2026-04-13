@@ -7,7 +7,14 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Second Page"), backgroundColor: Colors.green),
-      body: Center(child: Text("Welcome to the Second Page!")),
+      body: Center(
+        child: ElevatedButton(
+          child: Text("welcome to second page click to go First Page"),
+          onPressed: () {
+            Navigator.pushNamed(context, "/firstpage");
+          },
+        ),
+      ),
     );
   }
 }

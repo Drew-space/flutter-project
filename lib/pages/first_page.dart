@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/pages/second_page.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -10,13 +9,10 @@ class FirstPage extends StatelessWidget {
       appBar: AppBar(title: Text("First Page"), backgroundColor: Colors.blue),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SecondPage()),
-            );
-          },
           child: Text("Go to Second Page"),
+          onPressed: () {
+            Navigator.pushNamed(context, "/secondpage");
+          },
         ),
       ),
     );
