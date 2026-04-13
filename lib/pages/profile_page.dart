@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Setting Page", style: TextStyle(color: Colors.white)),
+        title: Text("Profile", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Text(
-          "Welcome to the Setting Page!",
+          "This is the profile page",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),

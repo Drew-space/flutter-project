@@ -1,38 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/pages/home_page.dart';
+import 'package:flutter_project/pages/profile_page.dart';
+import 'package:flutter_project/pages/setting_page.dart';
 
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+class FirstPage extends StatefulWidget {
+  FirstPage({super.key});
+
+  @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  // method to update the selcted index
+  void _navigateBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  // create an integer to tracck keep track of current page to display
+  int _selectedIndex = 0;
+
+  // list of pages we have in out app
+  final List _pages = [
+    // hompage
+    HomePage(),
+
+    // profile page
+    ProfilePage(),
+
+    // setting page
+    SettingPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("First Page"), backgroundColor: Colors.blue),
-      drawer: Drawer(
-        backgroundColor: Colors.deepPurple[200],
-        child: Column(
-          children: [
-            DrawerHeader(
-              child: Icon(Icons.account_circle, size: 100, color: Colors.white),
-            ),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _navigateBottomBar,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
 
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, "/homepage");
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, "/settingpage");
-              },
-            ),
-          ],
-        ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
+          ),
+        ],
       ),
     );
   }

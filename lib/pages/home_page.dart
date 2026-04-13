@@ -6,10 +6,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home Page"), backgroundColor: Colors.blue),
+      appBar: AppBar(
+        title: Text("Home Page", style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.blue,
+      ),
       body: Center(
         child: Text(
-          "Welcome to the Home Page!",
+          "Hello Flutter from the home page",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
