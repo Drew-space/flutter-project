@@ -7,7 +7,20 @@ class DialogBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.blueAccent,
-      content: Container(height: 200),
+      content: Container(
+        height: 200,
+
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Enter your name",
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
