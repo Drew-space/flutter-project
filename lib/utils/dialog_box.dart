@@ -14,7 +14,7 @@ class DialogBox extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                hintText: "Enter your name",
+                hintText: "Enter todo item",
                 border: OutlineInputBorder(),
               ),
             ),
