@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/utils/dialog_box.dart';
+import 'package:flutter_project/utils/list_card.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -8,43 +10,50 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
-  TextEditingController myController = TextEditingController();
+  List _todoList = [
+    ["Learn dart", false],
+    ["Learn flutter", true],
+    ["Learn firebase", false],
+    ["Learn node js", true],
+    ["Learn react js", false],
+    ["Learn angular js", true],
+    ["Learn vue js", true],
+  ];
 
-  String todos = "";
-
-  void greetUser() {
+  void checkBoxChanged(bool? value, int index) {
     setState(() {
-      todos = myController.text;
+      _todoList[index][1] = !_todoList[index][1];
     });
+  }
+
+  void _createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DialogBox();
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Todo App", style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(title: Center(child: Text('Todo List'))),
 
-            children: [
-              Text("Todo App"),
-              TextField(
-                controller: myController,
-                decoration: InputDecoration(
-                  hintText: "Enter todo item",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              ElevatedButton(onPressed: greetUser, child: Text("Add Todo")),
-              Text(todos),
-            ],
-          ),
-        ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueAccent,
+        onPressed: _createNewTask,
+        child: Icon(Icons.add, color: Colors.white),
+      ),
+      body: ListView.builder(
+        itemCount: _todoList.length,
+        itemBuilder: (context, index) {
+          return TodoCard(
+            taskName: _todoList[index][0],
+            isCompleted: _todoList[index][1],
+            onChanged: (value) => checkBoxChanged(value, index),
+          );
+        },
       ),
     );
   }
